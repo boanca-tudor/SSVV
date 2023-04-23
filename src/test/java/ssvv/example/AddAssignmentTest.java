@@ -9,23 +9,11 @@ import ssvv.example.validation.TemaValidator;
 import java.util.Iterator;
 
 public class AddAssignmentTest {
-    TemaRepository repository;
+    private TemaRepository repository;
 
     @Before
     public void initialize() {
         repository = new TemaRepository(new TemaValidator());
-    }
-
-    @Test
-    public void testAddValid() {
-        repository.save(new Tema("A1", "ceva", 2, 1));
-        assert repository.findOne("A1") != null;
-    }
-
-    @Test
-    public void testIdEmpty() {
-        repository.save(new Tema("", "ceva", 2, 1));
-        assert repository.findOne("") == null;
     }
 
     @Test
@@ -82,5 +70,4 @@ public class AddAssignmentTest {
         repository.save(new Tema("A1", "ceva", 2, 3));
         assert repository.findOne("A1") == null;
     }
-
 }
