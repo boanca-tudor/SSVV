@@ -17,6 +17,18 @@ public class AddAssignmentTest {
     }
 
     @Test
+    public void testAddValid() {
+        repository.save(new Tema("A1", "ceva", 2, 1));
+        assert repository.findOne("A1") != null;
+    }
+
+    @Test
+    public void testIdEmpty() {
+        repository.save(new Tema("", "ceva", 2, 1));
+        assert repository.findOne("") == null;
+    }
+
+    @Test
     public void testIdNull() {
         repository.save(new Tema(null, "ceva", 2, 1));
         Iterator<Tema> iterator = repository.findAll().iterator();
